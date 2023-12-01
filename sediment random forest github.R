@@ -55,7 +55,7 @@ rfstack <- c(bath, bbpi_masked, east_masked, fbpi_masked, north_masked, curd_mas
 #names should match the names in the CSV headers
 names(rfstack) <- c("bathymetry","bbpi","eastness","fbpi","northness","current_direction","current_magnitude","ruggedness","slope","ustarmean",
                     "ustarmax","maxwavepow","meanwavepow","ED_mainland","ED_islands","bathy_mean","bathy_stdev","bathy_var")
-#model one random forest for each of mud, sand, and gravel
+#model one random forest for each of mud, sand, and gravel. Use ntree= to adjust number of trees and mtry= to adjust number of variables at each node
 rfm <- randomForest(mud ~  current_direction  + current_magnitude  + ED_islands  + ED_mainland  + bathymetry  + maxwavepow  +
                       ustarmean  + ustarmax  + meanwavepow  + eastness  + northness  + ruggedness  + slope  + bbpi  + fbpi  + bathy_mean + bathy_var,  sed)
 rfs <- randomForest(sand ~ current_direction  + current_magnitude  + ED_islands  + ED_mainland  + bathymetry  + maxwavepow  +
